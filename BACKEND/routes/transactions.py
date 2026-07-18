@@ -99,22 +99,28 @@ def withdraw_funds():
     if request.method == "POST":
         raw_amount = request.form.get("amount", "").strip()
 
-        # --- Validation ---
+        # --- Validation check 1: Amount is required ---
         if not raw_amount:
             flash("Amount is required.", "danger")
             return render_template("withdraw.html", balance=current_balance)
 
+        # --- Validation check 2: Amount must be greater than zero ---
         try:
             amount = float(raw_amount)
         except ValueError:
-            flash("Please enter a valid number.", "danger")
+            flash("Amount must be greater than zero.", "danger")
             return render_template("withdraw.html", balance=current_balance)
 
         if amount <= 0:
-            flash("Withdrawal amount must be greater than zero.", "danger")
+            flash("Amount must be greater than zero.", "danger")
             return render_template("withdraw.html", balance=current_balance)
 
-        # --- Service call (also validates insufficient funds internally) ---
+        # --- Validation check 3: Insufficient funds ---
+        if amount > current_balance:
+            flash("Insufficient funds.", "danger")
+            return render_template("withdraw.html", balance=current_balance)
+
+        # --- Service call ---
         try:
             new_balance = withdraw(user_id, amount)
         except ValueError as exc:
