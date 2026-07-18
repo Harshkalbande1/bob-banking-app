@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# SQLite database (runtime artefact)
+*.db
+
+# Flask environment file
+.flaskenv
+
+# macOS
+.DS_Store
+
+# pytest cache
+.pytest_cache/
+
+# Editor
+.vscode/
+.idea/
