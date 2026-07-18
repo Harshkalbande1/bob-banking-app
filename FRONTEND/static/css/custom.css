@@ -1,0 +1,31 @@
+/* custom.css — Minor overrides on top of Bootstrap 5.
+   Reserve this file for styles Bootstrap cannot provide out of the box.   */
+
+/* ── Brand colour for navbar (already handled by Bootstrap's bg-primary)  */
+
+/* ── Balance card ──────────────────────────────────────────────────────── */
+.balance-card {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+  border-radius: 1rem;
+}
+
+.balance-amount {
+  font-size: 3rem;
+  letter-spacing: -0.03em;
+}
+
+/* ── Utility: subtle letter-spacing for label text ─────────────────────── */
+.letter-spacing {
+  letter-spacing: 0.08em;
+}
+
+/* ── Form input focus ring matches brand colour ─────────────────────────── */
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+}
+
+/* ── Card entrance — subtle visual weight ───────────────────────────────── */
+.card.shadow-sm {
+  border-radius: 0.75rem;
+}

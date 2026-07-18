@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — SecureBank{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <!-- Greeting row -->
+  <div class="row mb-4">
+    <div class="col">
+      <h2 class="fw-bold mb-0">Hello, {{ username }} 👋</h2>
+      <p class="text-muted small">Here is a summary of your account.</p>
+    </div>
+  </div>
+
+  <!-- Balance card -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-6 col-lg-4">
+      <div class="card border-0 shadow-sm text-center balance-card">
+        <div class="card-body py-5">
+          <p class="text-muted small text-uppercase letter-spacing mb-1">Current Balance</p>
+          <h1 class="balance-amount display-5 fw-bold text-primary mb-0">
+            ${{ "%.2f"|format(balance) }}
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="row justify-content-center g-3">
+    <div class="col-6 col-md-3">
+      <a href="{{ url_for('transactions.deposit_funds') }}"
+         class="btn btn-success btn-lg w-100 shadow-sm">
+        &#8593; Deposit
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="{{ url_for('transactions.withdraw_funds') }}"
+         class="btn btn-warning btn-lg w-100 shadow-sm text-dark">
+        &#8595; Withdraw
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="{{ url_for('auth.logout') }}"
+         class="btn btn-outline-secondary btn-lg w-100 shadow-sm">
+        Logout
+      </a>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
